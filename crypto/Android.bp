@@ -48,7 +48,7 @@ cc_defaults {
     export_include_dirs: ["include"],
 
     visibility: [
-        "//bootable/recovery/minadbd:__subpackages__",
+        "//bootable/recovery:__subpackages__",
         "//packages/modules/adb:__subpackages__",
     ],
 
@@ -68,8 +68,10 @@ cc_defaults {
 cc_library {
     name: "libadb_crypto",
     defaults: ["libadb_crypto_defaults"],
+    recovery_available: true,
 
     apex_available: [
+        "//apex_available:platform",
         "com.android.adbd",
         "test_com.android.adbd",
     ],
@@ -79,6 +81,7 @@ cc_library {
 cc_library_static {
     name: "libadb_crypto_static",
     defaults: ["libadb_crypto_defaults"],
+    recovery_available: true,
 
     apex_available: [
         "//apex_available:platform",
