@@ -52,7 +52,7 @@ cc_defaults {
         "//packages/modules/adb:__subpackages__",
 
         // This needs to be visible to minadbd, even though it's removed via exclude_shared_libs.
-        "//bootable/recovery/minadbd:__subpackages__",
+        "//bootable/recovery:__subpackages__",
     ],
 
     stl: "libc++_static",
@@ -64,8 +64,10 @@ cc_defaults {
 cc_library {
     name: "libadb_protos",
     defaults: ["libadb_protos_defaults"],
+    recovery_available: true,
 
     apex_available: [
+        "//apex_available:platform",
         "com.android.adbd",
         "test_com.android.adbd",
     ],
@@ -106,12 +108,13 @@ cc_defaults {
         "//packages/modules/adb:__subpackages__",
 
         // This needs to be visible to minadbd, even though it's removed via exclude_shared_libs.
-        "//bootable/recovery/minadbd:__subpackages__",
+        "//bootable/recovery:__subpackages__",
     ],
 
     stl: "libc++_static",
 
     apex_available: [
+        "//apex_available:platform",
         "com.android.adbd",
         "test_com.android.adbd",
     ],

@@ -348,11 +348,12 @@ cc_library {
     export_include_dirs: ["."],
 
     visibility: [
-        "//bootable/recovery/minadbd:__subpackages__",
+	"//bootable/recovery:__subpackages__",
         "//packages/modules/adb:__subpackages__",
     ],
 
     apex_available: [
+        "//apex_available:platform",
         "com.android.adbd",
         "test_com.android.adbd",
     ],
@@ -555,7 +556,7 @@ cc_library_static {
         "com.android.adbd",
     ],
     visibility: [
-        "//bootable/recovery/minadbd",
+	"//bootable/recovery:__subpackages__",
         "//packages/modules/adb:__subpackages__",
     ],
 }
@@ -635,6 +636,7 @@ cc_library {
         "com.android.adbd",
     ],
     visibility: [
+	"//bootable/recovery:__subpackages__",
         "//packages/modules/adb",
     ],
 
@@ -644,7 +646,10 @@ cc_library {
     name: "libadbd",
     defaults: ["adbd_defaults", "host_adbd_supported"],
     recovery_available: true,
-    apex_available: ["com.android.adbd"],
+    apex_available: [
+        "//apex_available:platform",
+         "com.android.adbd"
+    ],
 
     // avoid getting duplicate symbol of android::build::getbuildnumber().
     use_version_lib: false,
@@ -693,6 +698,7 @@ cc_library {
 
     visibility: [
         "//bootable/recovery/minadbd",
+	"//bootable/recovery:__subpackages__",
         "//packages/modules/adb",
     ],
 }
